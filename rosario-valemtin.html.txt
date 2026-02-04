@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Rosario 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      font-family: "Georgia", serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.93);
+      padding: 50px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.25);
+      max-width: 520px;
+      z-index: 2;
+      position: relative;
+    }
+
+    h1 {
+      color: darkred;
+      font-size: 2.7em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 25px;
+      color: #8b0000;
+    }
+
+    button {
+      margin: 15px;
+      padding: 15px 35px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .yes {
+      background: darkred;
+      color: white;
+    }
+
+    .yes:hover {
+      transform: scale(1.05);
+    }
+
+    .no {
+      background: gray;
+      color: white;
+      position: absolute;
+    }
+
+    .rose {
+      position: absolute;
+      top: -50px;
+      font-size: 32px;
+      animation: fall 6s linear infinite;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 25px;
+      animation: floatUp 3s ease-out forwards;
+      z-index: 3;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-50px); }
+      to { transform: translateY(110vh); }
+    }
+
+    @keyframes floatUp {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-200px); }
+    }
+
+    #finalMessage {
+      display: none;
+      margin-top: 25px;
+      font-size: 1.4em;
+      color: darkred;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎶 Música de fondo -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/9lqk8n.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Rosario 🌹</h1>
+
+    <p>
+      No sé exactamente en qué momento pasó…<br>
+      pero desde que llegaste, todo se siente diferente.<br><br>
+
+      Hay personas que sin hacer ruido, se vuelven especiales.<br>
+      Y tú eres una de esas personas para mí.<br><br>
+
+      Con cariño,<br>
+      <strong>Will 💌</strong>
+    </p>
+
+    <h2>¿Quieres ser mi San Valentín? 💖</h2>
+
+    <button class="yes" onclick="yesAnswer()">
+      Sí 💘
+    </button>
+
+    <button class="no" id="noBtn">
+      No 😅
+    </button>
+
+    <div id="finalMessage">
+      AAAAA 😭💖<br>
+      Entonces este 14 será aún más bonito contigo 🌹✨
+    </div>
+  </div>
+
+  <script>
+    // Botón "No" se escapa
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+      noBtn.style.left = Math.random() * window.innerWidth + "px";
+      noBtn.style.top = Math.random() * window.innerHeight + "px";
+    });
+
+    // Lluvia de rosas 🌹
+    function createRose() {
+      const rose = document.createElement("div");
+      rose.classList.add("rose");
+      rose.innerHTML = "🌹";
+      rose.style.left = Math.random() * window.innerWidth + "px";
+      rose.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(rose);
+
+      setTimeout(() => rose.remove(), 6000);
+    }
+
+    setInterval(createRose, 350);
+
+    // 💖 Animación especial al decir que sí
+    function yesAnswer() {
+      document.getElementById("finalMessage").style.display = "block";
+
+      for (let i = 0; i < 15; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = "80%";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 3000);
+    }
+  </script>
+
+</body>
+</html>
